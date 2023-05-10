@@ -1,14 +1,13 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using UIAutomationFramework.Utils;
 using UIAutomationFramework.Pages;
+using UIAutomationFramework.Configurations;
 
 namespace UIAutomationFramework.Scripts
 {
-    public class Hooks
-    {
-        public static IWebDriver? driver;
-        public HomePage? homePage;
+    public class Hooks : EnvironmentSettings
+    { 
+        public HomePage homePage;
 
         [SetUp]
         public void SetUp()

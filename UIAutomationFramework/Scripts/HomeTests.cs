@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using UIAutomationFramework.Pages;
 
 namespace UIAutomationFramework.Scripts
@@ -8,23 +7,32 @@ namespace UIAutomationFramework.Scripts
 	public class HomeTests : Hooks
 	{
 
-        [SetUp]
-        public void SetUpPage()
-        {
+		[SetUp]
+		public void SetUpPage()
+		{
 			homePage = new HomePage();
-        }
+		}
 
-        [Test]
+		[Test, Category("Smoke")]
 		public void validateLogo()
 		{
             driver.Navigate().GoToUrl("https://techglobal-training.com/");
 
-			Thread.Sleep(1000);
+			Thread.Sleep(2000);
 
-			Assert.IsTrue(homePage.logo.Displayed);
+			Assert.True(homePage.logo.Displayed);
 
-			Console.WriteLine(driver.FindElement(By.TagName("h1")).Text);
 		}
-	}
+
+        [Test, Category("Regression")]
+        public void validateHeader()
+        {
+            driver.Navigate().GoToUrl("https://techglobal-training.com/");
+
+            Thread.Sleep(2000);
+
+            Assert.True(homePage.logo.Displayed);
+        }
+    }
 }
 

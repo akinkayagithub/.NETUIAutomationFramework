@@ -5,7 +5,7 @@ namespace UIAutomationFramework.Utils
 {
     public class Driver
 	{
-        private static IWebDriver? driver;
+        private static IWebDriver driver;
         private Driver()
         {
         }
