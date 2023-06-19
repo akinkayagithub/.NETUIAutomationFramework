@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using UIAutomationFramework.Pages;
+using OpenQA.Selenium.Interactions;
 
 namespace UIAutomationFramework.Scripts
 {
@@ -25,13 +26,24 @@ namespace UIAutomationFramework.Scripts
 		}
 
         [Test, Category("Regression")]
-        public void validateHeader()
+        public void validateHeaderDropdown()
         {
             driver.Navigate().GoToUrl("https://techglobal-training.com/");
 
             Thread.Sleep(2000);
+			Actions actions = new Actions(driver);
+			actions.MoveToElement(homePage.headerDropdown).Perform();
+            Thread.Sleep(2000);
 
-            Assert.True(homePage.logo.Displayed);
+            Assert.True(homePage.dropdownItems.Count > 0);
+
+			string[] expectedTexts = {"Frontend Testing", "Backend Testing", "Java Exercises", "JS Exercises", "Mock Interviews"};
+
+			for(int i = 0; i < homePage.dropdownItems.Count; i++)
+			{
+				Assert.True(homePage.dropdownItems[i].Displayed);
+				Assert.That(homePage.dropdownItems[i].Text, Is.EqualTo(expectedTexts[i]));
+			}
         }
     }
 }
