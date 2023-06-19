@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using UIAutomationFramework.Configurations;
+using UIAutomationFramework.Utils;
 
 namespace UIAutomationFramework.Pages
 {
@@ -8,6 +9,18 @@ namespace UIAutomationFramework.Pages
         public IWebElement logo => driver.FindElement(By.Id("logo"));
         public IWebElement headerDropdown => driver.FindElement(By.Id("dropdown-button"));
         public IList<IWebElement> dropdownItems => driver.FindElements(By.CssSelector(".dropdown-menu a"));
+
+        public void selectPracticesDropDownOption(string optionText)
+        {
+            headerDropdown.Click();
+            ElementHandler.ClickListElement(dropdownItems, optionText);
+        }
+
+        public void selectPracticesDropDownOption(int index)
+        {
+            headerDropdown.Click();
+            ElementHandler.ClickListElement(dropdownItems, index);
+        }
     }
 }
 

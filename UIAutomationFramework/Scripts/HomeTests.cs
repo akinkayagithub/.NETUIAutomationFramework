@@ -17,8 +17,6 @@ namespace UIAutomationFramework.Scripts
 		[Test, Category("Smoke")]
 		public void validateLogo()
 		{
-            driver.Navigate().GoToUrl("https://techglobal-training.com/");
-
 			Thread.Sleep(2000);
 
 			Assert.True(homePage.logo.Displayed);
@@ -28,10 +26,8 @@ namespace UIAutomationFramework.Scripts
         [Test, Category("Regression")]
         public void validateHeaderDropdown()
         {
-            driver.Navigate().GoToUrl("https://techglobal-training.com/");
-
             Thread.Sleep(2000);
-			Actions actions = new Actions(driver);
+			
 			actions.MoveToElement(homePage.headerDropdown).Perform();
             Thread.Sleep(2000);
 
